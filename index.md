@@ -6,4 +6,4 @@ The documentation in these files is based on a lot of OpenBSD misc mailing list.
 We tried to keep our references but there may be some that missing.  Feel free to let us know and we will correct where such cases exists.
 
 ## List 
-* [OpemBSD php-fpm chroot.md](OpemBSD php-fpm chroot.md)
+* [OpenBSD php-fpm chroot.md](OpenBSD php-fpm chroot.md)
