@@ -10,3 +10,4 @@ We tried to keep our references but there may be some that missing.  Feel free t
 * [OpenBSD health checks.md](OpenBSD health checks.md)
 * [OpenBSD php-fpm chroot.md](OpenBSD php-fpm chroot.md)
 * [Using Xnest to play with window managers.md](Using Xnest to play with window managers.md)
+* [Monitoring HDD Health Status on OpenBSD.md] (Monitoring HDD Health Status on OpenBSD.md)
