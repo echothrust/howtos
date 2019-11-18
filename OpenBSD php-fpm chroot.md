@@ -270,3 +270,41 @@ our installations :).
 ## References
 
 * Using fcgi from command line https://rtcamp.com/tutorials/php/directly-connect-php-fpm/
+
+
+## Example code
+* Test curl
+```php
+<?php
+/*
+ * Test php fpm for proper curl configuration
+ */
+
+ $options = array(
+        CURLOPT_RETURNTRANSFER => 1,     // return web page
+        CURLOPT_HEADER         => 1,    // don't return headers
+        CURLOPT_FOLLOWLOCATION => true,     // follow redirects
+        CURLOPT_ENCODING       => "",       // handle all encodings
+        CURLOPT_USERAGENT      => "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:x.x.x) Gecko/20041107 Firefox/x.x", // who am i
+        CURLOPT_AUTOREFERER    => true,     // set referer on redirect
+        CURLOPT_CONNECTTIMEOUT => 120,      // timeout on connect
+        CURLOPT_TIMEOUT        => 120,      // timeout on response
+        CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
+        CURLOPT_SSL_VERIFYHOST => 2,
+        CURLOPT_SSL_VERIFYPEER => true,
+        CURLOPT_DNS_USE_GLOBAL_CACHE => false,
+        CURLOPT_DNS_CACHE_TIMEOUT => 2,
+        CURLOPT_HTTPGET => 1
+    );
+ 
+$url="https://graph.facebook.com";
+$_h = curl_init($url);
+foreach($options as $key =>$val)
+	curl_setopt($_h,$key,$val); 
+curl_setopt($_h, CURLOPT_URL, $url);
+
+
+var_dump(curl_exec($_h));
+var_dump(curl_getinfo($_h));
+var_dump(curl_error($_h));
+```
