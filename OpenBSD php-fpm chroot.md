@@ -296,15 +296,75 @@ our installations :).
         CURLOPT_DNS_CACHE_TIMEOUT => 2,
         CURLOPT_HTTPGET => 1
     );
- 
+
 $url="https://graph.facebook.com";
 $_h = curl_init($url);
 foreach($options as $key =>$val)
-	curl_setopt($_h,$key,$val); 
+	curl_setopt($_h,$key,$val);
 curl_setopt($_h, CURLOPT_URL, $url);
 
 
 var_dump(curl_exec($_h));
 var_dump(curl_getinfo($_h));
 var_dump(curl_error($_h));
+```
+
+* Test DNS
+```php
+<?php
+/*
+ * Check that all appropriate calls for name resolution work under the chroot.
+*/
+
+$domain="DOMAINTOLOOK";
+$inaddr="IPADDR";
+// If we run from the CLI we're fine
+if(is_array($argv) && count($argv)>1)
+{
+	$domain=$argv[1];
+	if (count($argv)>2) $inaddr=$argv[2];
+}
+// Set proper encoding so that the format is clean
+if(isset($_GET) && is_array($_GET))
+	header("Content-Type: text/plain");
+
+// if we run from within fpm
+if(isset($_GET['domain']) && !empty($_GET['domain']))
+	$domain=$_GET['domain'];
+
+if(isset($_GET['inaddr']) && !empty($_GET['inaddr']))
+	$inaddr=$_GET['inaddr'];
+
+
+check_call("gethostbyaddr",$inaddr);
+check_call("gethostbyname","$domain");
+check_call("checkdnsrr",$domain);
+check_call("checkdnsrr",$domain,"A");
+check_call("checkdnsrr",$domain,"NS");
+check_call("checkdnsrr",$domain,"TXT");
+check_call("checkdnsrr",$domain,"MX");
+check_call("checkdnsrr",$domain,"ANY");
+check_call("dns_get_record",$domain);
+
+/**
+ * Check the return of a call and log output for debuging
+ * @param string $func the function to call
+ * @param mixed $param1 the first parameter of the call
+ * @param mixed $param2 the second parameter of the call if any
+ */
+function check_call($func,$param1=null,$param2=null)
+{
+	echo "checking $func with [param1=$param1] and [param2=$param2] => ";
+	if($param2==null)
+		$ret=call_user_func($func,$param1);
+	else
+		$ret=call_user_func($func,$param1,$param2);
+
+	if($ret!==false) {
+		echo "true ", is_bool($ret) ? "\n" : var_dump($ret);
+	}
+	else
+		echo "false\n";
+
+}
 ```
