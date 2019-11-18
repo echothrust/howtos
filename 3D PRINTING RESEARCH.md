@@ -1,0 +1,41 @@
+# Useful MARLIN code
+* `G92E0` Reset printer
+* `M503` Current settings
+* `M83` Relative extrusion
+* `M92 Exx.xx` Set steps per mm
+* `M500` Store current settings
+* `G1E100F100` Extrude 100mm, feed 100mm
+* `M104 SXXX` Set extruder temp
+
+New Steps per mm = (Current steps per mm) x [100 / (measured distance filament traveled)]
+measured 101.3mm.
+current steps/mm is 93.
+So, 93 x (100 / 101.3) = 91.80
+
+# Calibrating filament
+ * Set the nozzle temp
+ * Set the steps per mm you want
+ * Reset extrusion state
+ * Set relative extrusion
+ * Extrude 100mm with feed 100mm(%?)
+```
+M104 S240
+M92 E100
+G92 E0
+M83
+G1 E100 F100
+```
+
+# Common Filament steps for CR10
+```
+M92 E95 # DARK GRAY EASYPRINT 0.6 nozzle
+M92 E96.5 # LIGHT GRAY PRIMAVALUE and EASYPRINT 3kg
+M92 E97 # LIGHT GRAY PRIMAVALUE 0.6 nozzle
+M92 E100 # TEMP@240C Silver PLA Prima & Clear PLA & GOLD
+M92 E102 # BLACK PLA@240C
+M92 E106.21 # LIGHT GRAY PRIMA PLA
+M92 E114.1 # White PLA Devil
+M92 E119.31 # Light Gray PLA Devil
+M92 E97.4 # Blue electric Devil PLA
+M92 E97.2 # Green electric Devil PLA
+```
