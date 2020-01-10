@@ -12,7 +12,8 @@
 * `set port enable`
 * `errdisable recovery cause`
 * `sh int g1/0/1`
-* shut no shut```
+* shut no shut
+```
 conf t
 int g1/0/1
 shut
