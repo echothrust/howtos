@@ -17,3 +17,4 @@ We tried to keep our references but there may be some that missing.  Feel free t
 * [./OpenBSD YP/SERVER.md](./OpenBSD YP/SERVER.md)
 * [./OpenBSD YP/CLIENT.md](./OpenBSD YP/CLIENT.md)
 * [./racadm-cmds.md](./racadm-cmds.md)
+* [./OpenBSD health checks.md](./OpenBSD health checks.md)
