@@ -273,7 +273,7 @@ our installations :).
 
 
 ## Example code
-* Test curl
+### Test curl
 ```php
 <?php
 /*
@@ -309,7 +309,7 @@ var_dump(curl_getinfo($_h));
 var_dump(curl_error($_h));
 ```
 
-* Test DNS
+### Test DNS
 ```php
 <?php
 /*
