@@ -7,8 +7,8 @@ The guide assumes you're running OpenBSD and nginx but the principles can be app
 * Configure pf
 ```
 table <maintenance> persist counters { }
-pass in quick inet proto tcp from <maintenance> to port 80 rdr-to (egress:0) port 8080 label "www-maintenance"
-pass in quick inet proto tcp from <maintenance> to port 443 rdr-to (egress:0) port 8443 label "www-maintenance"
+pass in quick inet proto tcp from <maintenance> to port 80 rdr-to port 8080 label "www-maintenance"
+pass in quick inet proto tcp from <maintenance> to port 443 rdr-to port 8443 label "www-maintenance"
 pass in quick inet proto tcp to port {80,443} label "www-normal"
 ```
 * Configure nginx
