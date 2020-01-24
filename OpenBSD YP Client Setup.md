@@ -13,7 +13,7 @@ amd=YES
 rpc.lockd=YES
 ```
 
-Add the NIS domain on ''/etc/defaultdomain''
+Add the NIS domain on `/etc/defaultdomain`
 ```sh
 echo mynisdomain > /etc/defaultdomain
 ```
@@ -27,7 +27,7 @@ Configure amd to auto mount home directories.
 **Note** that the automounted home is mounted on top of the existing /home.
 
 ## Append NIS maps to passwd and group files
-Add the following entry ''+:*::::::::'' into your password databases using ''vipw''
+Add the following entry `+:*::::::::` into your password databases using `vipw`
 ```sh
 pwd_mkdb /etc/master.passwd
 echo "+:*::" >> /etc/group
