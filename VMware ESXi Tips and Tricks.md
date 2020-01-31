@@ -3,6 +3,13 @@
 **Created:** 2010/12/07
 **Last Modified:** ~~LASTMOD~~
 
+## Change hostname
+* edit /etc/hosts
+* Run the commands
+```
+esxcli system hostname set --host=hostname
+esxcli system hostname set --fqdn=fqdn
+```
 ## Create Raw Disk mappings
 
 Find the disk conroler under /vmfs/devices/disks/vmhbaXX:0:0:0:0 and create a raw disk mapping inside the folder you want.
