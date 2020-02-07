@@ -1,7 +1,6 @@
 # TITLE:VMware ESXi Tips and Tricks
-**Author:** Pantelis Roditis
-**Created:** 2010/12/07
-**Last Modified:** ~~LASTMOD~~
+**Author:** Pantelis Roditis\
+**Created:** 2010/12/07\
 
 ## Change hostname
 * edit /etc/hosts
@@ -10,8 +9,8 @@
 esxcli system hostname set --host=hostname
 esxcli system hostname set --fqdn=fqdn
 ```
-## Create Raw Disk mappings
 
+## Create Raw Disk mappings
 Find the disk conroler under /vmfs/devices/disks/vmhbaXX:0:0:0:0 and create a raw disk mapping inside the folder you want.
 ```
 vmkfstools -a lsilogic -r /vmfs/devices/disks/vmhba35:0:0:0 DISK1TB-NEW.vmkd
