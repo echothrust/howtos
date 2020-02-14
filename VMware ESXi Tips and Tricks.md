@@ -1,6 +1,6 @@
 # TITLE:VMware ESXi Tips and Tricks
 **Author:** Pantelis Roditis\
-**Created:** 2010/12/07\
+**Created:** 2010/12/07
 
 ## Change hostname
 * edit /etc/hosts
