@@ -35,6 +35,12 @@ GRANT ALL PRIVILEGES ON *.* TO 'USER'@'HOST' IDENTIFIED BY 'PASSWORD'
 WITH GRANT OPTION
 ```
 
+## Disable mysql user ident
+```sh
+mysql -e "update user set plugin='mysql_native_password' where user='root'" mysql
+mysql -e "flush privileges;"
+```
+
 ## Configuration Parameters
 
 ```dosini
