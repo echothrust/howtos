@@ -46,7 +46,7 @@ done
 ## The FROM statement
 Usually one of the top most statements of a `Dockerfile`.  It is used to instruct docker to use another image as a base. Any following commands within the `Dockerfile` will be executed as if they were run from within a container of the imported image.
 
-Usual tricks that can be found in this section include but not limited to the following
+In general it is always a good idea to look for the `FROM` statements and trace them back on docker hub to see if they use official images or not. Some of the  tricks that can be found in `FROM` statements follows.
 
 
 ### Multi-stage builds
@@ -82,6 +82,7 @@ Pay close attention at the FROM image names as Unicode characters can be used to
 ## The RUN statement
 
 ## The COPY/ADD statement
+Pay close attention to `COPY` commands and more specificaly the `COPY --from=<name|index>`. Remember the multi-stage builds from above? This is where the COPY command may come in handy. 
 
 ## The VOLUME statement
 
