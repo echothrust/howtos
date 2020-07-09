@@ -1,6 +1,6 @@
 # Echothrust Solutions website maintenance HOWTO
 
-This is a small howto on how we perform scheduled maintenance on our websites that require a database.
+This is a small howto on how we perform scheduled maintenance on our websites that require a database update or re-import.
 
 The guide assumes you're running OpenBSD and nginx but the principles can be applied to a variety of applications and services.
 
