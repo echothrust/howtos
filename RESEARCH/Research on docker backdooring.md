@@ -93,6 +93,10 @@ Pay close attention at the FROM image names as Unicode characters can be used to
 
 ## Package manager repos
 
+## The docker run/create CLI params
+Pay close attention at the docker parameters required to run the container. The parameters that usually make me suspicious are:
+* `--privileged`
+* `--cap_add`
 ## Refs
 * https://www.fortinet.com/blog/threat-research/yet-another-crypto-mining-botnet
 * https://kromtech.com/blog/security-center/cryptojacking-invades-cloud-how-modern-containerization-trend-is-exploited-by-attackers
