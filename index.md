@@ -6,7 +6,6 @@ The documentation in these files is based on a lot of OpenBSD misc mailing list.
 We tried to keep our references but there may be some that missing.  Feel free to let us know and we will correct where such cases exists.
 
 ## List
-* [./OpenBSD YP/SERVER.md](./OpenBSD YP/SERVER.md)
 * [./Research on OpenBSD PPTP.md](./Research on OpenBSD PPTP.md)
 * [./OpenBSD YP Client Setup.md](./OpenBSD YP Client Setup.md)
 * [./OpenBSD health checks.md](./OpenBSD health checks.md)
