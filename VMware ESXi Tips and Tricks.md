@@ -175,3 +175,11 @@ esxcli network firewall ruleset set -e false -r httpClient && reboot
 ```sh
 vim-cmd hostsvc/maintenance_mode_exit
 ```
+
+## Regenerate Self-signed certificate
+```
+cd /etc/vmware/ssl
+mv rui.crt orig.rui.crt
+mv rui.key orig.rui.key
+/sbin/generate-certificates
+```
