@@ -1,6 +1,6 @@
 # Notes on Booting OpenBSD on SGI Hardware
 
-## SGI O2 Preparation =====
+## SGI O2 Preparation
 In order to start the installation from the CD you need to enter the following
 commands onto the `maintenance` mode of your O2.
 ```
