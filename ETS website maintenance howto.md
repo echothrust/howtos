@@ -39,7 +39,7 @@ pass in quick inet proto tcp to port {80,443} label "www-normal"
 
 Now in when you want to add your website under maintenance you can simply do
 ```sh
-doas pfctl -t maintenance -T add 0.0.0.0/0 # put side under mainteance
+doas pfctl -t maintenance -T add 0.0.0.0/0
 doas pfctl -k label -k www-normal # flush existing sessions
 ```
 
