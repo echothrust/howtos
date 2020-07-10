@@ -181,10 +181,37 @@ docker run -v $PWR/etc:/etc badimage
 ```
 
 ## Inspect images without sources
-You can also inspect the command used by using the docker command, such as
+You can inspect what an image does without having its sources (at some extend).
+
+The easiest way to inspect the contents of an image is to export it into
+archive and inspect it.
 ```sh
-docker image inspect badimage:lastest|grep -i cmd
+docker image save badimage:latest > badimage-latest.tgz
 ```
+
+Then you can extract the contents of the file you want to check, such as
+```sh
+tar -zxvf badimage-latest.tgz entrypoint.sh
+```
+
+Another way is to use the `docker image inspect <image>` to figure out what is
+going on. This is particularly useful when you dont have access to the sources
+that generated an image.
+
+```sh
+docker image inspect badimage:lastest
+```
+
+If you're not sure about an image see what happens by booting it without networking support
+```sh
+docker run -it --net=none untrusted:image
+```
+
+Define your own entry point to something you can trust
+```sh
+docker run -it --net=none --entrypoint="/bin/cat" untrusted:image /entrypoint.sh
+```
+
 
 ## Refs
 * https://www.fortinet.com/blog/threat-research/yet-another-crypto-mining-botnet
