@@ -131,10 +131,6 @@ script, i inspect its contents to try and figure out what it does.
 CMD ["/bin/ba.sh"]
 ```
 
-You can also inspect the command used by using the docker command, such as
-```sh
-docker image inspect badimage:lastest|grep -i cmd
-```
 
 ### The ENTRYPOINT statement
 The `ENTRYPOINT` defines the `init` for the image. The command from `CMD` is passed to this.
@@ -182,6 +178,12 @@ Pay attention when images
 ```sh
 docker run -v /var/run/docker.sock:/var/run/docker.sock badimage
 docker run -v $PWR/etc:/etc badimage
+```
+
+## Inspect images without sources
+You can also inspect the command used by using the docker command, such as
+```sh
+docker image inspect badimage:lastest|grep -i cmd
 ```
 
 ## Refs
