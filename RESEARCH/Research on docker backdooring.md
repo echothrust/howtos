@@ -48,7 +48,11 @@ The truth is that almost every single statement that can be used on a `Dockerfil
 ### The `FROM` statement
 Usually one of the top most statements of a `Dockerfile`.  It is used to instruct docker to use another image as a base. Any following commands within the `Dockerfile` will be executed as if they were run from within a container of the imported image.
 
+<<<<<<< HEAD
 Usual tricks that can be found in this section include but not limited to the following.
+=======
+In general it is always a good idea to look for the `FROM` statements and trace them back on docker hub to see if they use official images or not. Some of the  tricks that can be found in `FROM` statements follows.
+>>>>>>> 3578d3010de59a2607271c2cd25d4592bba0580d
 
 ### `FROM` Chaining
 Another trick that I've seen be used is what I call the _FROM chaining_. This is for images that depend on another, that in turn depend on other etc. etc. All the images seem clean but somewhere in the midst of all those images there's the one that adds the backdoored bash or whatever.
@@ -85,9 +89,8 @@ Pay close attention at the FROM image names as Unicode characters can be used to
 
 ### The RUN statement
 
-### The COPY/ADD statement
-
-### The VOLUME statement
+## The COPY/ADD statement
+Pay close attention to `COPY` commands and more specificaly the `COPY --from=<name|index>`. Remember the multi-stage builds from above? This is where the COPY command may come in handy.
 
 ### The CMD statement
 
