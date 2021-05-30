@@ -1,4 +1,4 @@
-# (WIP) Research on docker backdooring
+# (WIP) Research on docker auditing
 Pantelis Roditis (09/07/2020)
 
 As the main developer of echoCTF.RED, I have to develop docker containers quite
