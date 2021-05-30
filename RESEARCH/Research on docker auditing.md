@@ -185,6 +185,18 @@ docker run -v $PWR/etc:/etc badimage
 ## Inspect images without sources
 You can inspect what an image does without having its sources (at some extend).
 
+Starting with the `history` command we can get some initial information about image: layers, sizes and other details.
+```sh
+$ docker history gitlab/gitlab-runner:latest
+IMAGE          CREATED       CREATED BY                                      SIZE      COMMENT
+6965be4d8032   10 days ago   CMD ["run" "--user=gitlab-runner" "--working…   0B        buildkit.dockerfile.v0
+<missing>      10 days ago   ENTRYPOINT ["/usr/bin/dumb-init" "/entrypoin…   0B        buildkit.dockerfile.v0
+<missing>      10 days ago   VOLUME [/etc/gitlab-runner /home/gitlab-runn…   0B        buildkit.dockerfile.v0
+<missing>      10 days ago   STOPSIGNAL SIGQUIT                              0B        buildkit.dockerfile.v0
+<missing>      10 days ago   RUN |4 TARGETPLATFORM=linux/amd64 DOCKER_MAC…   0B        buildkit.dockerfile.v0
+...
+```
+
 The easiest way to inspect the contents of an image is to export it into
 archive and inspect it.
 ```sh
