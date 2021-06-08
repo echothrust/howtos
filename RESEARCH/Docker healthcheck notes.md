@@ -1,14 +1,21 @@
-# Healthcheck volumes pros/cons
+# Docker healthcheck notes
+The following document a list of notes on some of the pros/cons for multiple methods to perform healthchecks on our docker systems.
+
+## CMD pros/cons
+### shell script
+### binary tool
+## nsenter pros/cons
+
+## volumes pros/cons
 This is a draft for examining the pros/cons of moving away from healthcheck scripts as files during container build and into volumes.
 
-## PROS
+### PROS
 * Updates of healthcheck do not require image rebuild: We can simply replace the healtcheck script on the docker servers and restart the target for the new volume to pickup.
 * The healthcheck file can be `immutable` if mounted read-only: This can prevent users from replacing the healthcheck script contents. Although, this has not happened as of yet, it is still a concern.
 * Can be as self-contained as we want: We can code the checks we want to perform and have all the needed data included into the binary. This can include checksums for files, environment variables etc.
 * Avoid leaking information through the process table: During the current healthchecks the process table gets polluted with checksum, env and curl requests which programs like `pspy` can catch. The problem in these situations has more to do with the fact that users get disoriented from their task and think these processes are a lead towards rooting the box (which is not the case).
-* 
 
-## CONS
+### CONS
 * Requires syncing files to the docker servers: This can be somewhat dangerous since we need to find a way to push healtcheck files to the docker servers.
 * Breaks away from our concept of self-contained target images: All our images aim to be self-contained in every way and this can cause problems we haven't considered yet.
 * It will require a separate repository to maintain the updated healtchecks
