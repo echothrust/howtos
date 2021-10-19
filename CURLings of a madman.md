@@ -9,3 +9,9 @@ curl -X PUT "https://api.cloudflare.com/client/v4/zones/<ZONE_IDENTIFIER>/dns_re
      -H "Content-Type: application/json" \
      --data '{"type":"A","name":"example.com","content":"127.0.0.1","ttl":{},"proxied":false}'
 ```
+
+## Docker Registry
+```
+curl http://<registry:port>/v2/_catalog
+curl http://<registry:port>/v2/<IMAGENAME>/tags/list
+```
