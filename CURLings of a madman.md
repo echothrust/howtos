@@ -9,6 +9,11 @@ curl -X PUT "https://api.cloudflare.com/client/v4/zones/<ZONE_IDENTIFIER>/dns_re
      -H "Content-Type: application/json" \
      --data '{"type":"A","name":"example.com","content":"127.0.0.1","ttl":{},"proxied":false}'
 ```
+## dockerd socket
+* Get containers what their health stauts is `unhealthy`
+```
+curl  --unix-socket /var/run/docker.sock "http://localhost/containers/json?filters=\{\"health\":\[\"unhealthy\"\]${labelFilter}\}"|jq
+```
 
 ## Docker Registry
 * Get catalog listing
