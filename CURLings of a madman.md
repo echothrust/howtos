@@ -11,7 +11,21 @@ curl -X PUT "https://api.cloudflare.com/client/v4/zones/<ZONE_IDENTIFIER>/dns_re
 ```
 
 ## Docker Registry
-```
+* Get catalog listing
+```sh
 curl http://<registry:port>/v2/_catalog
+```
+
+* Get image tags
+```sh
 curl http://<registry:port>/v2/<IMAGENAME>/tags/list
+```
+
+* Get manifests
+```sh
+curl -fsSL \
+	-H 'Accept: application/vnd.docker.distribution.manifest.v2+json' \
+	-H 'Accept: application/vnd.docker.distribution.manifest.list.v2+json' \
+	-H 'Accept: application/vnd.docker.distribution.manifest.v1+json' \
+	"http://<registry:port>/v2/<IMAGENAME>/manifests/<DIGEST|TAG>"
 ```
