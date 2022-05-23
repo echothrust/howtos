@@ -15,14 +15,14 @@ So after helping them (_not solve their problem_ 🤣) this guide came out, in h
 ## ... deleting your `/etc/passwd`
 Ok so somehow you ended up with either a corrupt or non existent `/etc/passwd` file and you see something like this
 
-![](Pasted%20image%2020220523222530.png)
+![Oh noes](Pasted%20image%2020220523222530.png)
 
 Not to worry things are fairly easy to fix. Boot into [single user mode](#single-user-mode-on-linux)
 
 Once the system is booted you can recover your password file from a previous backup and adapt to your needs.
 
 Best case scenario all you have to do is the following
-![](Pasted%20image%2020220523222742.png)
+![easy-peasy](Pasted%20image%2020220523222742.png)
 
 
 The steps you need to do are as following:
@@ -73,6 +73,6 @@ Most of the recovery options that follow depend on entering in single user mode.
 
 1. Reboot your system and right after the Kali boot screen apears press the Escape key to stop the automatic boot.
 2. You will be presented with a menu similar to the following. Highlight the first option and press `e` (edit)
-![[Pasted image 20220523222730.png]]
+![](Pasted%20image%2020220523222730.png)
 3. You will then be presented with the various grub settings for this option. Move by pressing the arrow keys and go to the line starting with `linux /boot`, go at the end of the line and add ` init=/bin/bash` like the screenshot, and press Ctrl+X or F10
-![[Pasted image 20220523222737.png]]
+![](Pasted%20image%2020220523222737.png)
