@@ -15,14 +15,14 @@ So after helping them (_not solve their problem_ 🤣) this guide came out, in h
 ## ... deleting your `/etc/passwd`
 Ok so somehow you ended up with either a corrupt or non existent `/etc/passwd` file and you see something like this
 
-![[Pasted image 20220523222530.png]]
+![](Pasted%20image%2020220523222530.png)
 
 Not to worry things are fairly easy to fix. Boot into [single user mode](#single-user-mode-on-linux)
 
 Once the system is booted you can recover your password file from a previous backup and adapt to your needs.
 
 Best case scenario all you have to do is the following
-![[Pasted image 20220523222742.png]]
+![](Pasted%20image%2020220523222742.png)
 
 
 The steps you need to do are as following:
@@ -38,9 +38,11 @@ drwxr-xr-x 49 1000 1000 4096 May 23 22:39 username
 root@(none):/# mount -o rw,remount /
 ```
 3. check the system backup and confirm its contents (eg make sure your id or username is not already there like the following example)
-![[Pasted image 20220523230952.png]]
 
-Now depending on whether or not your details existe or not in the backup file you have to
+![](Pasted%20image%2020220523230952.png)
+
+
+Now depending on whether or not your details exist or not in the backup file you have to
 * If the backup file includes your id already, simply copy the backup over to your passwd
 ```shell
 root@(none):/# cp -p /etc/passwd- /etc/passwd
