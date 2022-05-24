@@ -42,7 +42,7 @@ pflogd1_flags=-s /var/log/pflog1 -i pflog1 -s 1500 -f /var/log/pflog1
 pflogd_flags=NO
 ```
 
-This is an extreme case but... it happened to us at a very unfortunate time at that time. Worse it happened when pflogd was running inside a tmux and we never realized we lost it :sob:
+This is an extremely rare case but... it happened to us at a very unfortunate time.
 
 ### The _Oh shit why my pflogd closed and reopened its logs_ situation
 Maybe less dangerous than the previous case is that of the rotation of logs. Its less dangerous because it only sends a HUP signal.
