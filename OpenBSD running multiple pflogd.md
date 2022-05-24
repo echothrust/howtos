@@ -108,7 +108,7 @@ rc_pre() {
 4. Configure your new pflogd1 instance to start on boot and start it
 ```shell
 foo# rcctl enable pflogd1
-foo# rcctl set pflogd1 flags -s /var/log/pflog1 -i pflog1 -s 1500 -f /var/log/pflog1
+foo# rcctl set pflogd1 flags -i pflog1 -s 1500 -f /var/log/pflog1
 foo# rcctl start pflogd1
 ```
 
