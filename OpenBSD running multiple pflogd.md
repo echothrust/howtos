@@ -25,7 +25,7 @@ Similarly for rotating logs, OpenBSD uses the following command `pkill -HUP -u r
 
 This command again matches running pflogd instances.
 
-Both of those commands match running pflogd instances, all of them. If the ones that didnt start from that rc script or write to that log file.
+Both of those commands match running pflogd instances, all of them. Even the ones that didnt start from by that rc script or write to that log file.
 
 This led to some situations that we didnt expect.
 
