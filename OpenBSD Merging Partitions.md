@@ -8,7 +8,7 @@ tags:
 # Doing it 1999 style: OpenBSD Merging Partitions
 This document attempts to outline the steps required to merge multiple partitions back into one.
 
-This is particularly targeting new users to OpenBSD with a few Linuxism's here and there to make relatable.
+This is particularly targeting new users to OpenBSD with a few Linuxism's here and there to make it relatable.
 
 Most of the information in here is already covered on the OpenBSD FAQ. This is not a replacement for it, this document is simply here to walk you though the process with examples so that you can do the same.
 
@@ -29,7 +29,7 @@ Filesystem     Size    Used   Avail Capacity  Mounted on
 foo#
 ```
 
-Most of the partitions will be fine as is however `/usr/src`, `/usr/obj`, will most likely never be used. However, 1.6GB for `/usr/local` will not be enough to install some eye candy desktop.
+Most of the partitions will be fine as is however `/usr/src`, `/usr/obj`, will most likely never be used. Moreover, 1.6GB for `/usr/local` will not be enough to install some eye candy desktop.
 
 ## The plan (baby steps)
 Our plan is to start with something simple at first and with less chances of losing data. We are going to merge `/usr/src` and `/usr/obj` into the `/usr/local` partition.
