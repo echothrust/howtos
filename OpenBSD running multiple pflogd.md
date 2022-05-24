@@ -29,7 +29,7 @@ Both of those commands match running pflogd instances, all of them. Even the one
 
 This led to some situations that we didnt expect.
 
-### The _Oh shit where's my pflogd_ situation
+### The _"Oh shit where's my pflogd"_ situation
 Whenever you try to restart one instance all of them will be restarted. This may not be a problem unless you are running multiple pflogd instances that you dont want to restart, reload etc.
 
 Check the next example; here `rcctl` kills the daemon that I had started manually on another terminal.
@@ -44,7 +44,7 @@ pflogd_flags=NO
 
 This is an extremely rare case but... it happened to us at a very unfortunate time.
 
-### The _Oh shit why my pflogd closed and reopened its logs_ situation
+### The _"Oh shit why my pflogd closed and reopened its logs"_ situation
 Maybe less dangerous than the previous case is that of the rotation of logs. Its less dangerous because it only sends a HUP signal.
 
 Worse case scenario with this, you'll only see a couple of packets missing from your capture. Very unlikely to cause problems, but again it may get you off-guard.
