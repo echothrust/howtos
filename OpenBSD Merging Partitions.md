@@ -116,7 +116,7 @@ The partitions that are of interest to us are **`i`** & **`j`**. We are going to
 
 **Note** that your values will differ, adapt them accordingly
 
-Delete the two partitions and print the table again to confirm.
+Delete the two partitions and print the table again to confirm. (_NOTE: when you have modifications that are not yet written to disk the **`*`** character will be added to the prompt such as `sd0*>`_)
 
 ```shell
 sd0> d i
