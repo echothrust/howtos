@@ -75,6 +75,7 @@ Run the `disklabel` utility and note the offset and sizes of the partitions
 ```shell
 foo# disklabel -E sd0
 Label editor (enter '?' for help at any prompt)
+sd0>
 ```
 
 Display the partition table using human sizes **`p m`** and size in blocks with just **`p`**
@@ -109,7 +110,7 @@ OpenBSD area: 64-33554432; size: 33554368; free: 16
   k:          5416256         28138176  4.2BSD   2048 16384 12960 # /home
 ```
 
-Our partitions that we are interested are **`i`** & **`j`** and we are going to merge them into **`h`**.
+Our partitions that are of interest to us are **`i`** & **`j`**. We are going to delete those and merge them into **`h`**.
 * **i** offset: 13916640, size: 3293248
 * **j** offset: 10928288, size: 17209888
 
