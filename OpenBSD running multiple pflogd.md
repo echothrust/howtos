@@ -18,7 +18,7 @@ Although the procedure of setting up a new pflog interface is fairly simple you 
 
 OpenBSD, by default, provides an rc script (`/etc/rc.d/pflogd`) to handle the daemon. This script uses a regular expression that matches for running `pflogd` instances and requests for them to be restarted or stopped.
 
-Similarly for rotating logs, OpenBSD uses the following command `pkill -HUP -u root -U root -t - -x pflogd` to restart the daemon from `/etc/newsyslog.conf`,
+Similarly, for rotating logs, OpenBSD uses `/etc/newsyslog.conf` with the following command `pkill -HUP -u root -U root -t - -x pflogd` to request the daemon to close and reopen its log files,
 ```
 /var/log/pflog   600  3     250  *     ZB "pkill -HUP -u root -U root -t - -x pflogd"
 ```
