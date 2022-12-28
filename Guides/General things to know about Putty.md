@@ -19,8 +19,6 @@ Putty Client, in order to know who we are, we will have to load for one time our
 
 Now we can use our keys to connect without a password on every account that has our public key in authorized_keys file. To do that we run the putty.exe and type the hostname of the machine we want to connect to. The difference is that we go to Connection->SSH->Auth as bellow and we select the 'Allow agent forwardin' and we browse for our filename.ppk.
 
-{{:users:dzoakos:notes:putty_client_auth.png|}}
-
 As we click on 'Open' button we should connect to host.
 
 ## Exporting Private Key from .ppk file
