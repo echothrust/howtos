@@ -3,9 +3,23 @@
 Author: Pantelis Roditis <proditis[at]echothrust.com>
 Date: 04/06/2021
 ```
+- [Environment variables and how to get them](#environment-variables-and-how-to-get-them)
+  - [Introduction](#introduction)
+  - [Why do we care](#why-do-we-care)
+  - [How they work](#how-they-work)
+    - [docker variables](#docker-variables)
+  - [How to get them](#how-to-get-them)
+    - [`printenv` - print all or part of environment](#printenv---print-all-or-part-of-environment)
+    - [`env` - print the environment or run a program in a modified environment](#env---print-the-environment-or-run-a-program-in-a-modified-environment)
+    - [`set` BUILTIN - show or set shell variables and functions](#set-builtin---show-or-set-shell-variables-and-functions)
+    - [`declare` / `typeset` BUILTINS - declare variables and/or give them attributes](#declare--typeset-builtins---declare-variables-andor-give-them-attributes)
+    - [ps](#ps)
+    - [/proc](#proc)
+  - [What next](#what-next)
+  - [References](#references)
 
 ## Introduction
-> An **environment variable** is a named value that can be accessed and affect the way running processes will behave on a computer. 
+> An **environment variable** is a named value that can be accessed and affect the way running processes will behave on a computer.
 > - wikipedia
 
 Think of variables as symbolic names we give to values in order to avoid remembering them. Say you use the number `3.1415926535897932384626433` quite often, and unless you are a robot it is going to be hard to remember the entire number by heart. So you give a name this number `pi=3.1415926535897932384626433` and now whenever you want to use it you simply use the symbolic name `pi`, instead of the huge number sequence.
@@ -13,9 +27,9 @@ Think of variables as symbolic names we give to values in order to avoid remembe
 In this document we will outline the use of environment variables, how they can be accessed, manipulated and taking advantage of them for both offensive and defensive security engineers.
 
 ## Why do we care
-So why are environment variables important from a security perspective? 
+So why are environment variables important from a security perspective?
 
-It used to be (in the old days lol) that environment variables where visible by everyone and as a rule most developers didn't use them to hold sensitive information. 
+It used to be (in the old days lol) that environment variables where visible by everyone and as a rule most developers didn't use them to hold sensitive information.
 However, as the adoption of environment variables grew, so was the need to start holding a bit more sensitive information. So the ability to hide the environment variables from other users and processes was added to some, if not all, UNIX and UNIX-like systems (such as Linux) and thus limiting their attack surface.
 
 Now, we've moved into the container era, environment variables got a new meaning. Have a quick look at docker hub and you'll see millions of images that use environment variables that hold sensitive information. From username, passwords, encryption keys, authentication tokens, system keys, there is an image with an environment variable use to match any imagination...
@@ -48,8 +62,8 @@ $ echo $mystring
 $
 ```
 
-The same will happen if you open another terminal and try to access the variable. So why is that? 
-The variables have effect only on the current session. In order for a variable to be available on subsequent commands and sessions that are spawned from the existing one, we have to `export` them. 
+The same will happen if you open another terminal and try to access the variable. So why is that?
+The variables have effect only on the current session. In order for a variable to be available on subsequent commands and sessions that are spawned from the existing one, we have to `export` them.
 ```bash
 $ export mystring
 $ bash
@@ -64,17 +78,17 @@ Understanding the concept of variable visibility is particularly important in si
 
 _We will not go deep into docker specifics just as far as we need for understanding the variables._
 
-Lets see an example with docker variables. 
+Lets see an example with docker variables.
 ```bash
-$ docker run -it -e "myvar=myvalue" bash 
+$ docker run -it -e "myvar=myvalue" bash
 root@envlab: / # echo $myvar
 myvalue
-root@envlab: / # 
+root@envlab: / #
 ```
 
 One thing we notice is that this variable is exported
 ```bash
-root@envlab: / # bash 
+root@envlab: / # bash
 root@envlab: / # echo $myvar
 myvalue
 ```
@@ -84,7 +98,7 @@ Even if we start a login bash the variable is still there
 root@envlab: / # bash -l
 4df007c4e761:/# echo $myvar
 myvalue
-4df007c4e761:/# 
+4df007c4e761:/#
 ```
 
 Even if we change users and shell, the variable is still there
@@ -115,7 +129,7 @@ TERM=xterm
 SHLVL=1
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 _=/bin/printenv
-root@envlab: / # 
+root@envlab: / #
 ```
 
 ### `env` - print the environment or run a program in a modified environment
@@ -139,8 +153,8 @@ root@envlab: / #
 
 2. Reset the environment and run `/usr/bin/env` to print the environment and see that its empty
 ```bash
-root@envlab: / # env -i /usr/bin/env 
-root@envlab: / # 
+root@envlab: / # env -i /usr/bin/env
+root@envlab: / #
 ```
 
 3. Reset the environment and run `/usr/local/bin/bash`. What we get is the variables that bash defines by default
@@ -150,7 +164,7 @@ root@envlab: / # env
 PWD=/
 SHLVL=1
 _=/usr/bin/env
-root@envlab: / # 
+root@envlab: / #
 ```
 
 4. Run bash with modified `$HOME` variable
@@ -168,7 +182,7 @@ _=/usr/bin/env
 ### `set` BUILTIN - show or set shell variables and functions
 Without options, the name and value of each shell variable are displayed in a format that can be reused as input for setting or resetting the currently-set variables. Read-only variables cannot be reset.
 
-This is a builtin command that is used to define and/or print shell specific variables and functions. 
+This is a builtin command that is used to define and/or print shell specific variables and functions.
 
 Running just `set`, returns far more variables than before.
 ```bash
@@ -224,7 +238,7 @@ root@envlab: / # /bin/ash
 HISTFILE='/root/.ash_history'
 HOME='/root'
 HOSTNAME='envlab'
-IFS=' 	
+IFS='
 '
 LINENO=''
 OPTIND='1'
@@ -240,7 +254,7 @@ _='/bin/sh'
 _BASH_BASELINE='5.1'
 _BASH_LATEST_PATCH='8'
 _BASH_VERSION='5.1.8'
-/ # 
+/ #
 ```
 
 An added bonus of using `set` is that it also displays functions that may have been defined
@@ -253,15 +267,15 @@ _=set
 _BASH_BASELINE=5.1
 _BASH_LATEST_PATCH=8
 _BASH_VERSION=5.1.8
-mytest () 
-{ 
+mytest ()
+{
  ls
 }
 root@envlab: / # mytest
 bin dev etc home lib media mnt opt proc root run sbin srv sys tmp usr var
 ```
 ### `declare` / `typeset` BUILTINS - declare variables and/or give them attributes
-Declare variables and/or give them attributes. If no names are given then display the values of variables. This command has the ability to display and manipulate variables as well as their attributes (eg. int, array, exported, etc). 
+Declare variables and/or give them attributes. If no names are given then display the values of variables. This command has the ability to display and manipulate variables as well as their attributes (eg. int, array, exported, etc).
 
 Without arguments it operates just like `set`, displaying the shell and environment variables and functions
 ```bash
@@ -301,9 +315,9 @@ This is what the declare attributes mean
 * `-u` When the variable is assigned a value, all lower-case characters are converted to upper-case
 * `-x` Mark names for export to subsequent commands via the environment
 
-For more details about the `declare` command check the `bash(1)` manual pages under the **SHELL BUILTIN COMMANDS** section. 
+For more details about the `declare` command check the `bash(1)` manual pages under the **SHELL BUILTIN COMMANDS** section.
 
-The `typeset` command behaves very similar to `declare` and is mostly there for compatibility with other shells. However, `typeset` without options, returns all variables and builtin shell functions. 
+The `typeset` command behaves very similar to `declare` and is mostly there for compatibility with other shells. However, `typeset` without options, returns all variables and builtin shell functions.
 
 ### ps
 The previous commands we saw all work on the current shell session, however many times we would like to see what environment variables were defined for an already running application, that may or may not have started by us.
@@ -346,13 +360,13 @@ As we can see, the first three processes belonging to the `root` and `sampleuser
 ### /proc
 There is another way to get the environment from a running process and this is through `/proc`, the process information pseudo-filesystem.
 
-The proc filesystem is a pseudo-filesystem which provides an interface to kernel data structures. It is commonly mounted at `/proc`, automatically by the system. 
+The proc filesystem is a pseudo-filesystem which provides an interface to kernel data structures. It is commonly mounted at `/proc`, automatically by the system.
 
 The filesystem provides and easy query to query and manipulate kernel structures as if they were simple files. For every process on the system, there is a corresponding directory under `/proc/<pid>/` with the exported kernel information. The files located under that folder correspond to different types of kernel information, but the ones that is of interest to us is `environ` & `cmdline`
 
-`/proc/[pid]/environ`: This file contains the **initial** environment that was set when the currently executing program was started via `execve(2).` The entries are separated by null bytes (`\0`), and there may be a null byte at the end. Thus, to print out the environment of process 1, you would do 
+`/proc/[pid]/environ`: This file contains the **initial** environment that was set when the currently executing program was started via `execve(2).` The entries are separated by null bytes (`\0`), and there may be a null byte at the end. Thus, to print out the environment of process 1, you would do
 ```bash
-root@63f7264d374e:/# strings /proc/1/environ 
+root@63f7264d374e:/# strings /proc/1/environ
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 HOSTNAME=envlab
 TERM=xterm
@@ -362,7 +376,7 @@ HOME=/root
 
 `/proc/[pid]/cmdline`: This read-only file holds the complete command line for the process, unless the process is a zombie. In the latter case, there is nothing in this file: that is, a read on this file will return 0 characters. The command-line arguments appear in this file as a set of strings separated by null bytes (`\0`), with a further null byte after the last string.
 ```bash
-root@63f7264d374e:/# strings /proc/1/cmdline 
+root@63f7264d374e:/# strings /proc/1/cmdline
 /bin/bash
 /entrypoint.sh
 bash
