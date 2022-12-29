@@ -1,8 +1,12 @@
+---
+title: Environment variables and how to get them
+author: Pantelis Roditis <proditis[at]echothrust.com>
+date: 04/06/2021
+category: paper
+layout: post
+---
+
 # Environment variables and how to get them
-```
-Author: Pantelis Roditis <proditis[at]echothrust.com>
-Date: 04/06/2021
-```
 - [Environment variables and how to get them](#environment-variables-and-how-to-get-them)
   - [Introduction](#introduction)
   - [Why do we care](#why-do-we-care)
@@ -395,6 +399,6 @@ I hope you enjoyed the reading and you were able to learn a few extra tricks in 
 Keep in mind that other shells (ash, ksh, csh etc) may behave differently regarding environment and builtin variables and functions. The commands outlined should be the same in most, however the output may differ. It is always a good idea to check the manual pages of the respective shell you're working with before trying random things.
 
 ## References
-* https://docs.oracle.com/cd/E19683-01/817-6958/userconcept-26/index.html
-* https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-linux
-* https://www.cs.ait.ac.th/~on/O/oreilly/unix/upt/ch06_01.htm
+* <https://docs.oracle.com/cd/E19683-01/817-6958/userconcept-26/index.html>
+* <https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-linux>
+* <https://www.cs.ait.ac.th/~on/O/oreilly/unix/upt/ch06_01.htm>
