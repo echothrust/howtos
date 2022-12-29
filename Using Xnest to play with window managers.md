@@ -33,7 +33,7 @@ xauth add localhost/unix${DISPLAY} . $MCOOKIE
 
 export DISPLAY
 xsetroot -cursor_name left_ptr
-feh -F -Z --bg-scale  ~/.fvwm/echothrust.jpg  
+feh -F -Z --bg-scale  ~/.fvwm/echothrust.jpg
 xterm -ls -name XTBIG &
 # merge in defaults and keymaps
 
@@ -58,7 +58,7 @@ do
 	xset +fp ${fontpath}
 done
 	xset fp rehash
-feh -F -Z --bg-scale  ~/.fvwm/echothrust.jpg  
+feh -F -Z --bg-scale  ~/.fvwm/echothrust.jpg
 exec fvwm  -display $DISPLAY
 xauth remove $(hostname)/unix${DISPLAY} localhost/unix${DISPLAY}
 

@@ -232,5 +232,5 @@ docker run -it --net=none --entrypoint="/bin/cat" untrusted:image /entrypoint.sh
 
 
 ## Refs
-* https://www.fortinet.com/blog/threat-research/yet-another-crypto-mining-botnet
-* https://kromtech.com/blog/security-center/cryptojacking-invades-cloud-how-modern-containerization-trend-is-exploited-by-attackers
+* <https://www.fortinet.com/blog/threat-research/yet-another-crypto-mining-botnet>
+* <https://kromtech.com/blog/security-center/cryptojacking-invades-cloud-how-modern-containerization-trend-is-exploited-by-attackers>
