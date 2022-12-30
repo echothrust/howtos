@@ -1,3 +1,6 @@
+---
+---
+
 # Server change tracking with GIT
 ## Server preparation
 Example with `gw/gw.example.com` replace with hostname and fqdn of rsyncsrv server name.

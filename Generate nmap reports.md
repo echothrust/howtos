@@ -1,3 +1,6 @@
+---
+---
+
 # Generate nmap Reports
 The following document describes a simple procedure to perform and compare network scans to detect anomalies.
 

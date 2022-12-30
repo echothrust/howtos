@@ -1,3 +1,7 @@
+---
+tags: [howto, XOrg, OpenBSD, Xnest]
+---
+
 # Using Xnest to play with window managers
 <sub>This post was originaly posted some 9 or 10 years ago</sub>
 
@@ -73,5 +77,3 @@ Now to nasty part is to start the nested X. Change this to the desired display.
 ```sh
 xinit .xinitrc.nest -- /usr/X11R6/bin/Xnest -full -dept 24 :2
 ```
-
-{{tag>howto XOrg OpenBSD Xnest}}

@@ -1,3 +1,6 @@
+---
+---
+
 # echothrust howtos
 A list of howtos based on internal research that we open in hopes public contributions will help to keep them up to date.
 

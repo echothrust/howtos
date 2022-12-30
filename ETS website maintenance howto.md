@@ -1,3 +1,6 @@
+---
+---
+
 # Echothrust Solutions website maintenance HOWTO
 
 This is a small howto on how we perform scheduled maintenance on our websites that require a database update or re-import.

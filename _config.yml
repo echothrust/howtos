@@ -3,5 +3,63 @@ title: echothrust/howtos
 name: echothrust/howtos
 description: A list of OpenBSD (mostly) material
 show_downloads: false
-github:
-  is_project_page: false
+
+#github:
+#  is_project_page: false
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-toc
+  - jekyll-seo-tag
+  - jekyll-coffeescript
+  - jekyll-commonmark-ghpages
+  - jekyll-gist
+  - jekyll-github-metadata
+  - jekyll-paginate
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+  - jekyll-default-layout
+  - jekyll-titles-from-headings
+
+include:
+  - windows
+  - openbsd
+  - linux
+
+collections:
+  devices:
+    output: yes
+  guides:
+    output: yes
+  linux:
+    output: yes
+  notes:
+    output: yes
+  openbsd:
+    output: yes
+  oracle:
+    output: yes
+  snips:
+    output: yes
+  vm:
+    output: yes
+  windows:
+    output: yes
+
+defaults:
+  - scope:
+      path: ""
+      type: "openbsd"
+    values:
+      layout: "default"
+
+exclude:
+  - WIP
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - CNAME
+  - _site

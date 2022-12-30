@@ -3,6 +3,7 @@ title: Environment variables and how to get them
 author: Pantelis Roditis <proditis[at]echothrust.com>
 date: 04/06/2021
 category: paper
+collection: paper
 layout: post
 ---
 
