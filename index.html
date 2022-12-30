@@ -3,8 +3,14 @@ layout: default
 ---
 
 <div class="posts">
+  <h1>echothrust howtos</h1>
+  <p>A list of howtos based on internal research that we open in hopes public contributions will help to keep them up to date.</p>
+  <p>The documentation in these files is based on a lot of OpenBSD misc mailing list.</p>
+  <p>Some parts of the documents may be copied "verbatim" from the original mail @misc. We tried to keep our references but there may be some that missing.</p>
+  <p>Feel free to let us know and we will correct where such cases exists.</p>
+
   <article class="post">
-    <h1>General Posts</h1>
+    <h2>General Posts</h2>
     <ul>
       {% assign pages = site.pages | where_exp: 'page', 'page.title' %}
       {% for post in pages %}
