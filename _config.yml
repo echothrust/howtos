@@ -63,4 +63,3 @@ exclude:
   - README.md
   - CNAME
   - _site
-  - .github
