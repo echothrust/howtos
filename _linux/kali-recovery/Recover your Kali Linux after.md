@@ -43,7 +43,7 @@ root@(none):/# mount -o rw,remount /
 ```
 3. check the system backup and confirm its contents (eg make sure your id or username is not already there like the following example)
 
-![check-backup](check-backup.png)
+   ![check-backup](check-backup.png)
 
 
 Now depending on whether or not your details exist or not in the backup file you have to
