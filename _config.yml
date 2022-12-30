@@ -3,7 +3,7 @@ title: echothrust/howtos
 name: echothrust/howtos
 description: A list of OpenBSD (mostly) material
 show_downloads: false
-baseurl: https://echothrust.github.io/howtos
+baseurl: /howtos
 #repository: echothrust/howtos
 #github:
 #  is_project_page: false
