@@ -22,12 +22,9 @@ plugins:
   - jekyll-default-layout
   - jekyll-titles-from-headings
 
-include:
-  - windows
-  - openbsd
-  - linux
-
 collections:
+  tips_and_tricks:
+    output: yes
   devices:
     output: yes
   guides:
@@ -50,7 +47,52 @@ collections:
 defaults:
   - scope:
       path: ""
+      type: "devices"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "guides"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "linux"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "notes"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
       type: "openbsd"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "oracle"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "snips"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "tips_and_tricks"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "vm"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "windows"
     values:
       layout: "default"
 

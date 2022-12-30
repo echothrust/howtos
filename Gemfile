@@ -10,6 +10,7 @@ group :jekyll_plugins do
   gem "jekyll-commonmark-ghpages"
   gem "jekyll-gist"
   gem "jekyll-github-metadata"
+  gem "github-pages"
   gem "jekyll-paginate"
   gem "jekyll-relative-links"
   gem "jekyll-optional-front-matter"
