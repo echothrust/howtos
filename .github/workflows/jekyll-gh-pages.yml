@@ -41,8 +41,7 @@ jobs:
         uses: actions/configure-pages@v2
 
       - name: bundle install
-        run: |
-          JEKYLL_ENV=production bundle exec jekyll build
+        run: bundle exec jekyll build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1

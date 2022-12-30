@@ -3,7 +3,8 @@ title: echothrust/howtos
 name: echothrust/howtos
 description: A list of OpenBSD (mostly) material
 show_downloads: false
-repository: echothrust/howtos
+#baseurl: echothrust.github.io/howtos
+#repository: echothrust/howtos
 #github:
 #  is_project_page: false
 plugins:
@@ -13,6 +14,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-coffeescript
   - jekyll-commonmark-ghpages
+  - jekyll-github-pages
   - jekyll-gist
   - jekyll-github-metadata
   - jekyll-paginate
