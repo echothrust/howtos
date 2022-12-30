@@ -11,18 +11,6 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-toc
-  - jekyll-seo-tag
-  - jekyll-coffeescript
-  - jekyll-commonmark-ghpages
-  - jekyll-github-pages
-  - jekyll-gist
-  - jekyll-github-metadata
-  - jekyll-paginate
-  - jekyll-relative-links
-  - jekyll-optional-front-matter
-  - jekyll-readme-index
-  - jekyll-default-layout
-  - jekyll-titles-from-headings
 
 collections:
   tips_and_tricks:
