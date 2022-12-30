@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<div class="posts">
+  <article class="post">
+    <h1>General Posts</h1>
+    <ul>
+      {% assign pages = site.pages | where_exp: 'page', 'page.title' %}
+      {% for post in pages %}
+      <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}...</a></li>
+      {% endfor %}
+    </ul>
+  </article>
+
+  <article class="post">
+    {% assign collections = site.collections | where_exp: 'collection', 'collection.label != "posts" ' %}
+    {% for collection in collections %}
+    <h2>{{collection.label|capitalize}}</h2>
+    <ul>
+      {% for post in site[collection.label] %}
+      <li> <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </article>
+
+</div>
