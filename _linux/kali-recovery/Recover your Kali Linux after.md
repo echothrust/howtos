@@ -19,14 +19,14 @@ So after helping them (_not solve their problem_ 🤣) this guide came out, in h
 ## ... deleting your `/etc/passwd`
 Ok so somehow you ended up with either a corrupt or non existent `/etc/passwd` file and you see something like this
 
-![Oh noes](Pasted image 20220523222530.png)
+![Oh noes](oh-noeees.png)
 
 Not to worry things are fairly easy to fix. Boot into [single user mode](#single-user-mode-on-linux)
 
 Once the system is booted you can recover your password file from a previous backup and adapt to your needs.
 
 Best case scenario all you have to do is the following
-![easy-peasy](Pasted image 20220523222742.png)
+![easy-peasy](easy-peasy.png)
 
 
 The steps you need to do are as following:
@@ -43,7 +43,7 @@ root@(none):/# mount -o rw,remount /
 ```
 3. check the system backup and confirm its contents (eg make sure your id or username is not already there like the following example)
 
-![](Pasted image 20220523230952.png)
+![check-backup](check-backup.png)
 
 
 Now depending on whether or not your details exist or not in the backup file you have to
@@ -77,6 +77,9 @@ Most of the recovery options that follow depend on entering in single user mode.
 
 1. Reboot your system and right after the Kali boot screen apears press the Escape key to stop the automatic boot.
 2. You will be presented with a menu similar to the following. Highlight the first option and press `e` (edit)
-![](Pasted image 20220523222730.png)
+
+   ![Kali Grub Menu](kali-grub-menu.png)
+
 3. You will then be presented with the various grub settings for this option. Move by pressing the arrow keys and go to the line starting with `linux /boot`, go at the end of the line and add ` init=/bin/bash` like the screenshot, and press Ctrl+X or F10
-![](Pasted image 20220523222737.png)
+
+   ![edit grub menu entry](edit-grub-menu.png)
