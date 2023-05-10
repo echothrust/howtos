@@ -333,6 +333,7 @@ The `ps` command, can help with that. This command provides information about ru
 * `w`: Wide output. Use this option twice for unlimited width.
 * `f`: ASCII art process hierarchy (forest).
 * `u`: Display user-oriented format.
+
 ```bash
 root@105b97a5ef81:/# ps -afeww
 UID PID PPID C STIME TTY TIME CMD
