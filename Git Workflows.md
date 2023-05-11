@@ -1,5 +1,14 @@
 ---
 ---
+- [Git Workflows](#git-workflows)
+  - [Forks workflow](#forks-workflow)
+  - [Cleaning Up Your Work](#cleaning-up-your-work)
+  - [Diffs between branches](#diffs-between-branches)
+  - [Reset fork based on upstream](#reset-fork-based-on-upstream)
+  - [Reset your upstream repository with current](#reset-your-upstream-repository-with-current)
+  - [Pushing an existing repo with history to a new blank repo](#pushing-an-existing-repo-with-history-to-a-new-blank-repo)
+  - [List changed files](#list-changed-files)
+  - [Using worktree](#using-worktree)
 
 # Git Workflows
 ## Forks workflow
@@ -46,7 +55,6 @@ git rebase main
 ```
 git diff master:foo foo
 git diff <local branch> <remote>/<remote branch>
-
 ```
 
 ## Reset fork based on upstream
@@ -65,7 +73,10 @@ https://stackoverflow.com/a/24768381
 ```
 git remote set-url origin https://new.repo/url
 git push origin master --force
-# or
+```
+
+or
+```
 git push origin master --force
 ```
 
