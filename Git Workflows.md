@@ -51,6 +51,7 @@ git diff <local branch> <remote>/<remote branch>
 
 ## Reset fork based on upstream
 ```
+git fetch -p
 git fetch -p upstream
 git checkout master
 git reset --hard upstream/master
@@ -66,4 +67,30 @@ git remote set-url origin https://new.repo/url
 git push origin master --force
 # or
 git push origin master --force
+```
+
+alternatively to keep both existing (as `upstream`) and new (as `origin`)
+```
+git remote rename origin upstream
+git remote add origin URL_TO_ORIGIN_GITHUB_REPO
+git push origin master
+```
+
+## List changed files
+Ref: https://stackoverflow.com/a/18957885
+```
+git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD
+```
+
+or
+
+```
+git diff-tree -r --name-only --no-commit-id HEAD@{1} HEAD
+```
+
+In case of `git pull --ff-only` command, when many commits can be added, `HEAD@{1}` (inside post-merge hook) gives the last commit before this command, while `ORIG_HEAD` gives just `HEAD^` commit.
+
+## Using worktree
+```
+git --work-tree=/var/www/html --git-dir=/usr/src/proj checkout -f
 ```
