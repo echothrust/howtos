@@ -39,6 +39,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'USER'@'HOST' IDENTIFIED BY 'PASSWORD' WITH GRANT
 On newer versions
 ```mysql
 CREATE USER dba@fqdn IDENTIFIED BY 'password';
+CREATE USER dba@fqdn IDENTIFIED VIA unix_socket;
 GRANT ALL PRIVILEGES ON *.* TO 'dba'@'FQDN' WITH GRANT OPTION;
 flush privileges;
 ```
@@ -58,6 +59,12 @@ CREATE DATABASE `XYZNAME` CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 ```sh
 mysql -e "update user set plugin='mysql_native_password' where user='root'" mysql
 mysql -e "flush privileges;"
+```
+
+
+## Install timezones
+```
+mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql mysql
 ```
 
 ## Configuration Parameters
