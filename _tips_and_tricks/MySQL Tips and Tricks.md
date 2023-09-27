@@ -55,6 +55,11 @@ Create database with utf8 multi-byte (4) case-insensitive encoding
 CREATE DATABASE `XYZNAME` CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 ```
 
+Disable root user password when unix socket is in used (**ON DEVELOPMENT ENVIRONMENTS ONLY**)
+```sql
+ALTER USER root@localhost IDENTIFIED VIA unix_socket;
+```
+
 ## Disable mysql user ident
 ```sh
 mysql -e "update user set plugin='mysql_native_password' where user='root'" mysql
