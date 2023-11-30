@@ -1,24 +1,20 @@
 ---
+Author: Pantelis Roditis
+Based: Based on a guide that I cant find online :(
+Created: 2006/08/14 01:45
 ---
 
 # Roll your own OpenBSD Live CD
----
-Author: Pantelis Roditis
-Based: Based on a guide that can find online :(
-Created: 2006/08/14 01:45
----
-- [Roll your own OpenBSD Live CD](#roll-your-own-openbsd-live-cd)
-  - [Created: 2006/08/14 01:45](#created-20060814-0145)
-  - [Introduction](#introduction)
-  - [Create the main system](#create-the-main-system)
-  - [Configuring basic system](#configuring-basic-system)
-  - [Fixing backups](#fixing-backups)
-  - [Configuring Memory Filesystems](#configuring-memory-filesystems)
-  - [Create the devices we need to boot](#create-the-devices-we-need-to-boot)
-  - [Compiling new kernel](#compiling-new-kernel)
-  - [Patching the Makefile.inc](#patching-the-makefileinc)
-  - [fstab creation](#fstab-creation)
-  - [Create an ISO](#create-an-iso)
+- [Introduction](#introduction)
+- [Create the main system](#create-the-main-system)
+- [Configuring basic system](#configuring-basic-system)
+- [Fixing backups](#fixing-backups)
+- [Configuring Memory Filesystems](#configuring-memory-filesystems)
+- [Create the devices we need to boot](#create-the-devices-we-need-to-boot)
+- [Compiling new kernel](#compiling-new-kernel)
+- [Patching the Makefile.inc](#patching-the-makefileinc)
+- [fstab creation](#fstab-creation)
+- [Create an ISO](#create-an-iso)
 
 ## Introduction
 Since there isn't (unfortunately) an official OpenBSD Live CD we will create one.
