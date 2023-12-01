@@ -39,26 +39,32 @@ Prior to submitting your pull request, you might want to do a few things to clea
 If any commits have been made to the upstream main branch, you should `rebase` your development branch so that merging it will be a simple fast-forward that won't require any conflict resolution work.
 
 Fetch upstream main and merge with your repo's main branch
-```
+```bash
 git fetch upstream
 git checkout main
 git merge upstream/main
 ```
 
 If there were any new commits, `rebase` your development branch
-```
+```bash
 git checkout newfeature
 git rebase main
 ```
 
 ## Diffs between branches
-```
+```bash
 git diff master:foo foo
 git diff <local branch> <remote>/<remote branch>
 ```
 
-## Reset fork based on upstream
+## Pull a single file from head
+```bash
+git checkout FETCH_HEAD -- {file}
 ```
+
+
+## Reset fork based on upstream
+```bash
 git fetch -p
 git fetch -p upstream
 git checkout master
@@ -70,18 +76,18 @@ git push origin master --force
 https://stackoverflow.com/a/24768381
 
 ## Pushing an existing repo with history to a new blank repo
-```
+```bash
 git remote set-url origin https://new.repo/url
 git push origin master --force
 ```
 
-or
-```
+or if origin is the same
+```bash
 git push origin master --force
 ```
 
 alternatively to keep both existing (as `upstream`) and new (as `origin`)
-```
+```bash
 git remote rename origin upstream
 git remote add origin URL_TO_ORIGIN_GITHUB_REPO
 git push origin master
