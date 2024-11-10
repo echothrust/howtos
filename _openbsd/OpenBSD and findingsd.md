@@ -65,7 +65,7 @@ So our previous match rules can be modified to log to a specific interface, like
 match in log (to pflog1) all scrub (no-df)
 match out log (to pflog1) on tl0 from 192.168.1.0/24 to any nat-to 198.51.100.1
 ```
-This will log all packets that match the criteria to the pseudo interface `pflog1`.  
+This will log all packets that match the criteria to the pseudo interface `pflog1`.
 
 ### `label`-ing
 So now we've covered matching and loging but all the actions we saw already perform an unwanted action to our packets (`scrub` & `nat-to`). The last piece 
