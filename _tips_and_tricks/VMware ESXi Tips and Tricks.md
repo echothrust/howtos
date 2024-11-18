@@ -187,3 +187,9 @@ mv rui.crt orig.rui.crt
 mv rui.key orig.rui.key
 /sbin/generate-certificates
 ```
+
+## Disable Cisco Discovery Protocol
+```
+esxcfg-vswitch -B down vSwitch0
+esxcfg-module -d lldp
+```
