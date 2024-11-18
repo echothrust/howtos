@@ -44,6 +44,11 @@ GRANT ALL PRIVILEGES ON *.* TO 'dba'@'FQDN' WITH GRANT OPTION;
 flush privileges;
 ```
 
+On existing users:
+```sql
+grant all privileges on *.* to root@localhost IDENTIFIED VIA mysql_native_password;
+```
+
 Disable ident plugin so that users can login as root
 ```mysql
 mysql -e "update user set plugin='mysql_native_password' where user='root'" mysql
