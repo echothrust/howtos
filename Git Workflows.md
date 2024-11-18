@@ -4,11 +4,13 @@
   - [Forks workflow](#forks-workflow)
   - [Cleaning Up Your Work](#cleaning-up-your-work)
   - [Diffs between branches](#diffs-between-branches)
+  - [Pull a single file from head](#pull-a-single-file-from-head)
   - [Reset fork based on upstream](#reset-fork-based-on-upstream)
   - [Reset your upstream repository with current](#reset-your-upstream-repository-with-current)
   - [Pushing an existing repo with history to a new blank repo](#pushing-an-existing-repo-with-history-to-a-new-blank-repo)
   - [List changed files](#list-changed-files)
   - [Using worktree](#using-worktree)
+  - [Maintenance and Repairing](#maintenance-and-repairing)
 
 # Git Workflows
 ## Forks workflow
@@ -110,4 +112,10 @@ In case of `git pull --ff-only` command, when many commits can be added, `HEAD@{
 ## Using worktree
 ```
 git --work-tree=/var/www/html --git-dir=/usr/src/proj checkout -f
+```
+
+## Maintenance and Repairing
+```
+git fsck --full
+git gc --prune=now
 ```
