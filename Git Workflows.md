@@ -119,3 +119,14 @@ git --work-tree=/var/www/html --git-dir=/usr/src/proj checkout -f
 git fsck --full
 git gc --prune=now
 ```
+
+## Git LFS
+```
+git lfs migrate import --no-rewrite pattern
+```
+
+or 
+```
+git lfs track pattern
+git add --renormalize . 
+```
