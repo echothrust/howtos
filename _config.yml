@@ -38,6 +38,8 @@ collections:
     output: yes
   oracle:
     output: yes
+  programming:
+    output: yes
   snips:
     output: yes
   vm:
@@ -79,6 +81,11 @@ defaults:
   - scope:
       path: ""
       type: "snips"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "programming"
     values:
       layout: "default"
   - scope:
